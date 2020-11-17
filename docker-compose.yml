@@ -45,6 +45,17 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: dev_proposta
 
+  transacoes-novo-db:
+    image: 'postgres:alpine'
+    volumes:
+      - transacoes-novo-db-volume:/var/lib/postgresql/data
+    ports:
+      - 5434:5432
+    environment:
+      POSTGRES_USER: transacoes
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: dev_transacao
+
   keycloak:
     image: jboss/keycloak
     ports:
@@ -166,3 +177,4 @@ volumes:
   prometheus-volume:
   postgres-volume:
   propostas-db-volume:
+  transacoes-novo-db-volume: 
